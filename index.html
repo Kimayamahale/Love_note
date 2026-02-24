@@ -1,219 +1,171 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>For Jayesh ❤️</title>
+  <title>Kimaya ❤️ Jayesh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom right, #ffe6f0, #ffd6e8);
-            font-family: 'Segoe UI', sans-serif;
-            overflow-x: hidden;
-        }
+  <style>
+    body {
+      margin:0;
+      font-family: 'Segoe UI', cursive;
+      background: linear-gradient(135deg, #ffd1dc, #ffe6f0);
+      overflow-x: hidden;
+      text-align:center;
+    }
 
-        .lock-screen {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: #fff0f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 999;
-        }
+    /* PASSWORD SCREEN */
+    #lockScreen {
+      position:fixed;
+      top:0; left:0;
+      width:100%;
+      height:100%;
+      background:#fff0f5;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    }
 
-        .lock-screen h2 {
-            color: #ff4d88;
-        }
+    input {
+      padding:10px;
+      border-radius:10px;
+      border:1px solid pink;
+      font-size:16px;
+      margin-top:10px;
+    }
 
-        .lock-screen input {
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            margin-top: 10px;
-        }
+    button {
+      margin-top:10px;
+      padding:10px 20px;
+      border:none;
+      border-radius:20px;
+      background:#ff4d88;
+      color:white;
+      cursor:pointer;
+    }
 
-        .lock-screen button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            background: #ff4d88;
-            color: white;
-            cursor: pointer;
-        }
-<div style="text-align:center; margin-top:40px;">
-  <button onclick="playSong()" style="
-    background: linear-gradient(45deg, #ff6fa5, #ffb6c1);
-    border: none;
-    padding: 15px 30px;
-    border-radius: 30px;
-    font-size: 18px;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(255,105,180,0.6);
-    animation: glow 1.5s infinite alternate;
-  ">
-    💖 Click here to hear our song 💖
-  </button>
-</div>
+    /* MAIN CARD */
+    .card {
+      margin:30px auto;
+      padding:20px;
+      max-width:600px;
+      background:white;
+      border-radius:25px;
+      box-shadow:0 0 20px rgba(255,105,180,0.4);
+    }
 
-<audio id="loveSong" loop>
-  <source src="song.mp3" type="audio/mpeg">
-</audio>
-        .postcard {
-            max-width: 420px;
-            margin: 40px auto;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 0 25px rgba(0,0,0,0.25);
-            padding: 20px;
-            text-align: center;
-            display: none;
-        }
+    img {
+      width:100%;
+      border-radius:15px;
+      margin-top:10px;
+    }
 
-        .title {
-            font-size: 26px;
-            color: #ff4d88;
-        }
+    /* FALLING HEARTS */
+    .heart {
+      position:fixed;
+      top:-10px;
+      color:#ff4d88;
+      font-size:20px;
+      animation: fall linear infinite;
+    }
 
-        .names {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 5px;
-        }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
 
-        .date {
-            font-size: 14px;
-            color: #999;
-            margin-bottom: 15px;
-        }
+    /* GLOW BUTTON */
+    .musicBtn {
+      background: linear-gradient(45deg,#ff6fa5,#ffb6c1);
+      padding:15px 30px;
+      border:none;
+      border-radius:30px;
+      font-size:18px;
+      color:white;
+      cursor:pointer;
+      box-shadow:0 0 15px rgba(255,105,180,0.6);
+      animation: glow 1.5s infinite alternate;
+    }
 
-        img {
-            width: 100%;
-            border-radius: 15px;
-            margin-bottom: 10px;
-        }
-
-        .message {
-            font-size: 16px;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .footer {
-            margin-top: 15px;
-            font-weight: bold;
-            color: #ff4d88;
-        }
-
-        .heart {
-            position: fixed;
-            top: -10px;
-            color: #ff4d88;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-    </style>
+    @keyframes glow {
+      from { box-shadow:0 0 10px #ff99cc; }
+      to { box-shadow:0 0 25px #ff1493; }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- 🔐 Password Screen -->
-<div class="lock-screen" id="lock">
-    <h2>Enter Secret Password ❤️</h2>
-    <input type="password" id="pass" placeholder="Enter password">
-    <button onclick="unlock()">Open</button>
+<!-- PASSWORD LOCK -->
+<div id="lockScreen">
+  <h2>🔒 Enter Password</h2>
+  <input type="password" id="passInput" placeholder="Enter our secret ❤️">
+  <button onclick="checkPassword()">Unlock</button>
 </div>
 
-<!-- 🎵 Music -->
-<audio autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
+<!-- MAIN CONTENT -->
+<div class="card" id="mainContent" style="display:none;">
+
+  <h2>💖 Kimaya & Jayesh 💖</h2>
+  <p>📅 Our Special Date: <b>31 May 2025</b></p>
+
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+  <img src="photo3.jpg">
+  <img src="photo4.jpg">
+
+  <p style="font-size:18px; margin-top:20px;">
+    Thank you for choosing me 💖<br><br>
+    You make my life happier than ever 😊<br>
+    Thank you for all the laughing moments 😂 and counting more 💫<br><br>
+    You are so special for me 💕<br>
+    With you things look easier than before 🤍<br><br>
+    You are my comfort zone 🫂<br>
+    I have never felt like this for anyone before 💘<br><br>
+    I am so glad that I have you in my life 💞<br>
+    You are more precious to me than a 💍 diamond 💎<br><br>
+    I love you so much Jayesh ❤️
+  </p>
+
+  <!-- MUSIC BUTTON -->
+  <button class="musicBtn" onclick="playSong()">💖 Play Our Song 🎶</button>
+
+</div>
+
+<!-- AUDIO -->
+<audio id="loveSong" loop>
+  <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 💌 Main Card -->
-<div class="postcard" id="card">
-
-    <div class="title">Hey Jayesh ❤️</div>
-    <div class="names">Kimaya ❤️ Jayesh</div>
-    <div class="date">Our Special Day: 31 May 2025 💖</div>
-
-    <img src="photo1.jpg">
-    <img src="photo2.jpg">
-    <img src="photo3.jpg">
-
-    <div class="message">
-        It hurts me to see you in pain, but I know you are strong and you will recover soon 💪🥺 <br><br>
-
-        Please take proper rest, follow all instructions, and take care of your hand 🤗🩹 <br><br>
-
-        💖 Thank you for choosing me. You make my life happier than ever 😘✨ <br><br>
-
-        😂 Thank you for all the laughing moments… and many more to come 💞 <br><br>
-
-        💎 You are so special to me. With you, everything feels easier and better 🌈 <br><br>
-
-        🤗 You are my comfort zone… I have never felt like this for anyone before 💓 <br><br>
-
-        🥹 I am so grateful to have you in my life… you are more precious to me than a diamond 💍❤️ <br><br>
-
-        I love you more than anything ❤️
-    </div>
-
-    <div class="footer">
-        Get well soon my hero 💪❤️
-    </div>
-
-</div>
-
-<!-- ❤️ Password Script -->
 <script>
-function unlock() {
-    var password = document.getElementById("pass").value;
-    if(password === "Mazha Makad") {
-        document.getElementById("lock").style.display = "none";
-        document.getElementById("card").style.display = "block";
+  function checkPassword() {
+    var pass = document.getElementById("passInput").value;
+    if(pass === "Mazha Makad") {
+      document.getElementById("lockScreen").style.display="none";
+      document.getElementById("mainContent").style.display="block";
     } else {
-        alert("Wrong password 😜");
+      alert("Wrong password 😜");
     }
-}
-</script>
+  }
 
-<!-- ❤️ Falling Hearts -->
-<script>
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  function playSong() {
+    document.getElementById("loveSong").play();
+  }
+
+  // falling hearts
+  setInterval(function(){
+    var heart = document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(2+Math.random()*3)+"s";
     document.body.appendChild(heart);
 
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
-}
-setInterval(createHeart, 300);
+    setTimeout(()=>heart.remove(),5000);
+  },300);
 </script>
-<style>
-@keyframes glow {
-  from { box-shadow: 0 0 10px #ff99cc; }
-  to { box-shadow: 0 0 25px #ff1493; }
-}
-</style>
 
-<script>
-function playSong() {
-  var song = document.getElementById("loveSong");
-  song.play();
-}
-</script>
 </body>
 </html>
