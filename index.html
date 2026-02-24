@@ -44,7 +44,25 @@
             color: white;
             cursor: pointer;
         }
+<div style="text-align:center; margin-top:40px;">
+  <button onclick="playSong()" style="
+    background: linear-gradient(45deg, #ff6fa5, #ffb6c1);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255,105,180,0.6);
+    animation: glow 1.5s infinite alternate;
+  ">
+    💖 Click here to hear our song 💖
+  </button>
+</div>
 
+<audio id="loveSong" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
         .postcard {
             max-width: 420px;
             margin: 40px auto;
@@ -184,6 +202,18 @@ function createHeart() {
 }
 setInterval(createHeart, 300);
 </script>
+<style>
+@keyframes glow {
+  from { box-shadow: 0 0 10px #ff99cc; }
+  to { box-shadow: 0 0 25px #ff1493; }
+}
+</style>
 
+<script>
+function playSong() {
+  var song = document.getElementById("loveSong");
+  song.play();
+}
+</script>
 </body>
 </html>
