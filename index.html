@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Jayesh ❤️</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #ffe6f0, #ffd6e8);
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .lock-screen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #fff0f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 999;
+        }
+
+        .lock-screen h2 {
+            color: #ff4d88;
+        }
+
+        .lock-screen input {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        .lock-screen button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #ff4d88;
+            color: white;
+            cursor: pointer;
+        }
+
+        .postcard {
+            max-width: 420px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.25);
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .title {
+            font-size: 26px;
+            color: #ff4d88;
+        }
+
+        .names {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #ff4d88;
+        }
+
+        .heart {
+            position: fixed;
+            top: -10px;
+            color: #ff4d88;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 🔐 Password Screen -->
+<div class="lock-screen" id="lock">
+    <h2>Enter Secret Password ❤️</h2>
+    <input type="password" id="pass" placeholder="Enter password">
+    <button onclick="unlock()">Open</button>
+</div>
+
+<!-- 🎵 Music -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 💌 Main Card -->
+<div class="postcard" id="card">
+
+    <div class="title">Hey Jayesh ❤️</div>
+    <div class="names">Kimaya ❤️ Jayesh</div>
+    <div class="date">Our Special Day: 31 May 2025 💖</div>
+
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+
+    <div class="message">
+        It hurts me to see you in pain, but I know you are strong and you will recover soon 💪🥺 <br><br>
+
+        Please take proper rest, follow all instructions, and take care of your hand 🤗🩹 <br><br>
+
+        💖 Thank you for choosing me. You make my life happier than ever 😘✨ <br><br>
+
+        😂 Thank you for all the laughing moments… and many more to come 💞 <br><br>
+
+        💎 You are so special to me. With you, everything feels easier and better 🌈 <br><br>
+
+        🤗 You are my comfort zone… I have never felt like this for anyone before 💓 <br><br>
+
+        🥹 I am so grateful to have you in my life… you are more precious to me than a diamond 💍❤️ <br><br>
+
+        I love you more than anything ❤️
+    </div>
+
+    <div class="footer">
+        Get well soon my hero 💪❤️
+    </div>
+
+</div>
+
+<!-- ❤️ Password Script -->
+<script>
+function unlock() {
+    var password = document.getElementById("pass").value;
+    if(password === "Mazha Makad") {
+        document.getElementById("lock").style.display = "none";
+        document.getElementById("card").style.display = "block";
+    } else {
+        alert("Wrong password 😜");
+    }
+}
+</script>
+
+<!-- ❤️ Falling Hearts -->
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
